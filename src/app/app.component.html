@@ -1,0 +1,47 @@
+<mat-toolbar>
+<h1>Fetch Data With Api</h1>
+</mat-toolbar>
+
+<!-- Filter input -->
+
+<div fxLayout fxLayoutAlign="center center">
+  <mat-form-field fxFlex="40%">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search name here.." #input>
+  </mat-form-field>
+</div>
+
+<!-- Table -->
+
+<table mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="name" >
+    <th mat-header-cell *matHeaderCellDef  mat-sort-header> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef  mat-sort-header> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email }} </td>
+  </ng-container>
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef  mat-sort-header> Phone Number </th>
+    <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="website">
+    <th mat-header-cell *matHeaderCellDef  mat-sort-header> Website </th>
+    <td mat-cell *matCellDef="let element"> {{element.website}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="company.name">
+    <th mat-header-cell *matHeaderCellDef  mat-sort-header> Company Name</th>
+    <td mat-cell *matCellDef="let element"> {{element.company.name}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<!-- <pagination -->
+
+<mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 15, 20]">
+</mat-paginator>
